@@ -1,0 +1,3 @@
+- Node.JS muss installiert sind
+- IDE
+- Zum Testen bitte einmal `05_modules` `npx http-server` starten
