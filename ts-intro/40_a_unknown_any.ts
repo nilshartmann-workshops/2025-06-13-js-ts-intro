@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as assert from "node:assert";
 
 export default undefined;
@@ -21,6 +22,10 @@ declare function fetchData(): any;
 // null zurück).
 // Deswegen wollen wir den Verwender dazu zwingen,
 // den Return Type vor der Verwendung zu überprüfen
+//
+// --> VORBEREITUNG: Entferne '// @ts-nocheck' oben, damit die TS-Fehler
+//  angezeigt werden
+//
 //  -> AUGABE: Setze den Rückgabe-Typ von fetchData()
 //     auf 'unknown'. Nun gibt es hier keinen Fehler mehr
 //     (Warum nicht gleich als Rückgabe-Typ 'ServerResponse'

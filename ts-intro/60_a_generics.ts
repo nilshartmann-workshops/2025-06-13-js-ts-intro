@@ -1,5 +1,9 @@
+// @ts-nocheck
 export default undefined;
 
+// VORBEREITUNG: Entferne '// @ts-nocheck' oben, damit die TS-Fehler
+//  angezeigt werden
+//
 // AUFGABE 1: Beschreibe die Typen für einen generischen Cache
 
 // SCHRITT 1: Beschreibe ein Objekt "Cache",

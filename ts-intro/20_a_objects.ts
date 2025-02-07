@@ -24,7 +24,7 @@ type Person = {
 }
 
 type PersonWithHobby = {
-	todo: "Definiere diesen Typen. Er soll die Person-Eigenschaften ";
+	todo: "Definiere diesen Typen";
 	// dieser Typ soll alle Eigenschaften aus 'Person'
 	// und zusätzlich die Eigenschaften 'hobby' und 'spendTimeWithHobby'
 	// enthalten

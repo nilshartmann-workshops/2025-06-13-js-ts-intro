@@ -1,7 +1,11 @@
+// @ts-nocheck
 // noinspection JSVoidFunctionReturnValueUsed
 
 export default undefined;
 
+// VORBEREITUNG: Entferne '// @ts-nocheck' oben, damit die TS-Fehler
+//  angezeigt werden
+//
 // AUFGABE 1: Das Argument 'port' soll nur die beiden Strings
 //  LPT1 oder COM1 entgegennehmen.
 //  Schreibe einen Type-Alias dafür und verwende ihn hier als
