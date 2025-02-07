@@ -1,26 +1,26 @@
+// @ts-nocheck
 export default undefined;
 
-function readPerson() {
-	return {
-		id:         "p-1",
-		firstname:  "Susi",
-		age:        34,
-		registered: true
-	}
+type Person = {
+	id: string;
+	firstname: string;
+	age: number;
+	registered: boolean;
 }
 
-type Person = ReturnType<typeof readPerson>;
-
+// VORBEREITUNG:
+//   - Entferne die Zeile '// @ts-nocheck' am Beginn der Datei,
+//     damit TS hier Fehler anzeigt
+//
 // AUFGABE:
-//   Die Funktion 'newPerson' soll einen Parameter 'p' bekommen
-//    - Der Parameter soll dem Typen entsprechen, der von
-//      readPerson zurückkommt, allerdings OHNE das 'id'-Property
-//      (Stell dir vor es gibt ein fachliches Objekt Person,
-//      das kommet aus einer DB (mit Id), beim erzeugen einer
-//      neuen Person gibt es die Id aber noch nicht)
-//    - Kannst du den Typen so bauen, dass du ihn aus dem Rückgabe-
-//      Typ von readPerson ableiten lässt?
-declare function newPerson(p: Omit<Person, "id">): void;
+//   Die Funktion 'newPerson' soll einen korrekten Typen für
+//   // den Parameter 'p' bekommen ('any' bitte entfernen)
+//    - Der Parameter soll dem Typen Person entsprechen,
+//      allerdings OHNE das 'id'-Property
+//      (Möglicher Use-Case: es gibt diesen Typ für "fertige" Personen,
+//      und wir brauchen einen Typen für "neue" Personen, die noch
+//      keine Id haben)
+declare function newPerson(p: any): void;
 
 // Das soll funktionieren
 newPerson({
@@ -39,7 +39,8 @@ newPerson({
 	registered: false
 });
 
-// AUFGABE 2: patchPersons soll eine Liste von Personen entgegen nehmen
+// AUFGABE 2: patchPersons soll eine Liste von 'Person'en entgegen nehmen
+//  (any bitte enfernen)
 //  - Die Liste soll nicht veränderbar sein!
 //  - Die übergebenen Personen sollen eine beliebige Untermenge des
 //     Person-Typs sein
@@ -49,7 +50,7 @@ newPerson({
 //     (patchPersons speichert die Objekte vielleicht auf dem Server
 //     oder einer DB, soll die Objekte selber aber nicht anpassen)
 //
-function patchPersons(persons: ReadonlyArray<Partial<Readonly<Person>>>) {
+function patchPersons(persons: any) {
 
 	// @ts-expect-error persons sollte eine schreibgeschützte Liste sein,
 	//   darauf darf 'push' nicht aufgerufen werden
@@ -87,3 +88,4 @@ function patchPersons(persons: ReadonlyArray<Partial<Readonly<Person>>>) {
 //     https://www.typescriptlang.org/docs/handbook/2/objects.html#the-array-type
 //     https://www.typescriptlang.org/docs/handbook/2/objects.html#the-readonlyarray-type
 //  Eingebaute Utility-Types: https://www.typescriptlang.org/docs/handbook/utility-types.html
+//     Omit Utility Type: https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys

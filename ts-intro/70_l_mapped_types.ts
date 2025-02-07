@@ -1,17 +1,15 @@
 export default undefined;
 
-function readPerson() {
-	return {
-		id:         "p-1",
-		firstname:  "Susi",
-		age:        34,
-		registered: true
-	}
+type Person = {
+	id: string;
+	firstname: string;
+	age: number;
+	registered: boolean;
 }
 
+
 // AUFGABE:
-//   Die Funktion 'newPerson' soll einen korrekten Typen für
-//   // den Parameter 'p' bekommen ('any' bitte entfernen)
+//   Die Funktion 'newPerson' soll einen Parameter 'p' bekommen
 //    - Der Parameter soll dem Typen entsprechen, der von
 //      readPerson zurückkommt, allerdings OHNE das 'id'-Property
 //      (Stell dir vor es gibt ein fachliches Objekt Person,
@@ -19,7 +17,7 @@ function readPerson() {
 //      neuen Person gibt es die Id aber noch nicht)
 //    - Kannst du den Typen so bauen, dass du ihn aus dem Rückgabe-
 //      Typ von readPerson ableiten lässt?
-declare function newPerson(p: any): void;
+declare function newPerson(p: Omit<Person, "id">): void;
 
 // Das soll funktionieren
 newPerson({
@@ -39,7 +37,6 @@ newPerson({
 });
 
 // AUFGABE 2: patchPersons soll eine Liste von Personen entgegen nehmen
-//  (any bitte enfernen)
 //  - Die Liste soll nicht veränderbar sein!
 //  - Die übergebenen Personen sollen eine beliebige Untermenge des
 //     Person-Typs sein
@@ -49,7 +46,7 @@ newPerson({
 //     (patchPersons speichert die Objekte vielleicht auf dem Server
 //     oder einer DB, soll die Objekte selber aber nicht anpassen)
 //
-function patchPersons(persons: any) {
+function patchPersons(persons: ReadonlyArray<Partial<Readonly<Person>>>) {
 
 	// @ts-expect-error persons sollte eine schreibgeschützte Liste sein,
 	//   darauf darf 'push' nicht aufgerufen werden

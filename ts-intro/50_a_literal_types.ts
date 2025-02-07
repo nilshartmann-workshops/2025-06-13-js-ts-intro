@@ -84,13 +84,7 @@ const device = createDevice(portName);
 //    - Die Funktion soll - abhängig davon, welches Device übergeben
 //      wurde - die 'print' bzw. 'transmit'-Funktion aufrufen, und
 //      deren Rückgabewert zurückliefern
-//    - Das Ergebnis von 'useDevice' soll also _immer_ ein String sein
-//    - Wenn die Funktion zur Laufzeit mit einem ungültigen Device aufgerufen
-//      wurde, soll die Funktion einen Fehler werfen
-//    - Wenn der Union-Typ mit den Devices erweirtert wird, soll die Funktion
-//      einen Compile-Fehler erzeugen
-//      (erweitere dafür deinen Device Union-Typen um ein neues Device)
-//
+
 const value: string = useDevice(device);
 
 function useDevice(device: any): string {

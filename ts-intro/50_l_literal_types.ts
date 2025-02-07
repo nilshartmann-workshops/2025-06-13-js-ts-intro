@@ -131,11 +131,7 @@ type CommunicationDevice = {
 	transmit(): string;
 }
 
-type UnknownDevice = {
-	port: "X"
-}
-
-function useDevice(device: LinePrintingDevice | CommunicationDevice | UnknownDevice): string {
+function useDevice(device: LinePrintingDevice | CommunicationDevice): string {
 	if (device.port === "LPT1") {
 		return device.print();
 	}
@@ -144,12 +140,7 @@ function useDevice(device: LinePrintingDevice | CommunicationDevice | UnknownDev
 		return device.transmit();
 	}
 
-	// @ts-expect-error
-	handleInvalidDevice(device);
-}
-
-function handleInvalidDevice(x: never): never {
-	throw new Error("Invalid Device detected!")
+	throw new Error("Wrong type");
 }
 
 // REFERENZ
