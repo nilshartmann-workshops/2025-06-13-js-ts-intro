@@ -64,12 +64,13 @@ function getPortName() {
 }
 
 // AUFGABE 2:
-//   - Der Aufruf von createDevice ist hier fehlerhaft,
-//     sollte aber funktionieren...
-//   - Welcher Typ ist 'portName'?
+//   - Der Aufruf von createDevice ist hier lt. TypeScript fehlerhaft,
+//     sollte aber eigentlich funktionieren, oder?
+//   - Lass dir mal den Typ  'portName' anzeigen
 //   - Was musst du verändern, damit du den Rückgabe-Wert
 //     an createDevice übergeben kannst?
-//     - Hinweis: Du kannst hier und/oder in der getPortName
+//     - Hinweis: Es gibt mehrere Möglichkeiten.
+//       Du kannst hier (beim Aufruf) und/oder in der getPortName
 //       Anpassungen machen.
 //
 const portName = getPortName();
@@ -79,12 +80,30 @@ const device = createDevice(portName);
 //  Implementiere die useDevice-Funktion. Diese soll mit
 //    Devices arbeiten können, die mit createDevice erzeugt
 //    werden
-//    - Du musst also einen (Union-)Typen für Device erzeugen
-//      - Den Union-Typ musst du für den 'device'-Parameter verwneden
-//    - Die Funktion soll - abhängig davon, welches Device übergeben
+//    - Die Basis für die beiden Device-Typen ist unten schon gemacht,
+//      aber es fehlt noch der Port.
+//    - Wenn du die beiden Typen vervollständigt hast, kannst du
+//      das 'any' in der 'useDevice'-Signatur durch den Union-Typen
+//      der beiden 'Device's ersetzen
+//    - Die useDevice-Funktion soll - abhängig davon, welches Device übergeben
 //      wurde - die 'print' bzw. 'transmit'-Funktion aufrufen, und
 //      deren Rückgabewert zurückliefern
 
+
+type LinePrintingDevice = {
+	// todo: ergänze den Port!
+	print(): string;
+}
+
+type CommunicationDevice = {
+	// todo: ergänze den Port!
+	transmit(): string;
+}
+
+// Exemplarischer Aufruf. Wenn du Signatur
+//  von useDevice mit dem korrekten Union-Typen
+//  beschrieben hast, sollte es hier keinen Fehler
+//  geben
 const value: string = useDevice(device);
 
 function useDevice(device: any): string {
