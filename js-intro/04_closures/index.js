@@ -44,6 +44,7 @@ c.addItem("fritz", "Fischers Fritz"); // Erwartet: error
 
 // REFERENZ
 // Closures: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+// typeof-Operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 // in-Operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in
 // delete-Operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete
 // throw-Statement: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw

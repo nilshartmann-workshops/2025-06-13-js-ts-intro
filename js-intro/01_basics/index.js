@@ -28,4 +28,7 @@ console.log("Please edit index.js");
 // function-Expression: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function
 // typeof-Operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 // Template Strings: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+//
+// Zum Ausgeben von Log-Informationen auf der Konsole (Node.JS und Browser):
+//  https://developer.mozilla.org/en-US/docs/Web/API/console/log_static
 

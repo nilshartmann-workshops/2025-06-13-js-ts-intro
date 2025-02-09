@@ -1204,7 +1204,6 @@ const olderPersons = persons.map( p => {
 
 <section data-markdown="">
   <textarea data-template>
----
 ### Closures
 <!-- .slide: class="left" -->
 * Eine "normale" Funktion...
@@ -1360,12 +1359,10 @@ const olderPersons = persons.map( p => {
 ### Übung Closures
 
 * *Implementiere einen einfachen Cache* als **Closure**
-* In `04_closures` findest Du zwei JavaScript-Dateien:
-  * In der Datei `make_cache_class.js` baust Du den Cache als JavaScript Klasse:
-  * In der Datei `make_cache_closure.js` baust Du den Cache als Closure
-* Aufgabe und Beschreibung ist in beiden Dateien unterschiedlich, nur deine Implementierung unterscheidet sich :-)
+* Implementiere den Cache in `04_closures/index.js`
+* Dort findest du auch eine genauere Aufgabenbeschreibung
 * Lösung findest Du in `solution`
-* Wenn Du fertig bist, bitte Hand in Zoom heben 🙋
+* Wenn Du fertig bist, bitte virtuelle Hand heben 🙋
   </textarea>
  </section>
 
@@ -2485,16 +2482,6 @@ function printTitle(hopefullyAMovie: any) {
   type Fn = typeof sayHello;
         // (name: string) => string | null
   ```
----
-### Übung: TypeScript
-* Mach dich mit `typeof`, Union Types und Type Guards vertraut
-* Vorbereitung:
-  * Bitte in `js-intro/ts` einmal `npm install` ausführen
-* In der Datei `js-intro/ts/10_intro.ts` findest Du eine Übung beschrieben
-* Du musst die Datei nicht ausführen. Sie soll "nur" keine TypeScript-Fehler haben
-* Die erwarteten Fehler (bzw. nicht-Fehler) habe ich Euch in die Datei geschrieben.
-* Eine mögliche Lösung findest Du in `10_s_intro.ts` ("s" wie Solution 😊)
-* Wenn Du fertig bist, bitte Hand heben in Zoom 🙋
 
 ---
 ## Generics
@@ -2666,12 +2653,6 @@ wird er von der Funktion unverändert zurückgegeben, ansonsten wirft die Funkti
   declare function validateNumberOrString<O extends string|number>(o: O): O | null
   ```
 
----
-### Übung Generics
-* Beschreibe eine generische Wrapper-Klasse, die ein Objekt verwaltet
-* Aufgabenbeschreibung findest Du in `29_uebung_generics.ts`.
-* Die Lösung findest Du in `29_s_uebung_generics.ts` (`s` wie `solution
-* Wenn Du fertig bist, bitte Hand heben in Zoom 🙋
   </textarea
   >
         </section>
