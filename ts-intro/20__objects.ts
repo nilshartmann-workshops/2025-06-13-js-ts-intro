@@ -2,6 +2,7 @@ export default undefined;
 
 /*
 	- Objekte
+	- Type Alias (auch für Funktion!)
 	- type vs interface
 	- Signaturen für Funktionen
 	- Optionale Properties
@@ -9,6 +10,4 @@ export default undefined;
 	- nominal vs. structural
 	- Intersection
 	- Beispiel: Person und Animal
-
-
  */

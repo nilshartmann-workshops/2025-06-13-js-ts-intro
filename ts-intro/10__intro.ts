@@ -7,7 +7,8 @@ export default undefined;
 - TS Language Server (Beispiel: IDE VS Code im JS-Code der bisherigen Übungen)
 - Ableiten von Typen
   - any und implizit any
-- Standard-Datentypen
+- Standard-Datentypen (noch keine Objekte)
 - null OR undefined, union typen, Teil 1
 - optionale Funktionsargumente mit ?
+- Type narrowing
 */

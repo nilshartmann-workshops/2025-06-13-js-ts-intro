@@ -1,129 +1,95 @@
 export default undefined;
 
-// Beschreibe die TypeScript-Typen "Person" und "PersonWithHobby"
-//   (Die darin enthaltenen Eigenschaften sollen denen aus dem
-//    'p'-Objekt der vorherigen Übung entsprechen)
-//  - Entferne die erste Zeile in der Datei "// @ts-nocheck", damit
-//    die TS-Fehler angezeigt werden
-//  - PersonWithHobby soll die beiden Einträge 'hobby' und 'spendTimeWithHobby'
-//    haben
-//  - Abweichend von dem p-Objekt aus der ersten Übung, soll
-//     die 'spendTimeWithHobby'-Funktion einen Parameter (Zahl) entgegennehmen
-//   - Wenn du die Typen korrekt definiert hast, sollten unten keine
-//     Fehler mehr auftreten
-//     - Die Folgezeile, die mit "// @ts-expect-error" markiert ist, ist
-//       bewusst fehlerhaft implementiert, um exemplarisch zu zeigen, welche
-//       Verwendungen nicht erlaubt sind
-//       (Das heisst, wenn dein TypeScript Typ korrekt ist, wird in der
-//        darauffolgenden Zeile KEIN Fehler angezeigt, obwohl die Verwendung
-//        falsch ist)
+// VORBEREITUNG:
+//  - Entferne die erste Zeile in dieser DAtei ("// @ts-nocheck")
+//    - Damit "aktivierst" du TypeScript in dieser Datei
+//    - Deine IDE zeigt dir jetzt TS-Fehler an (wenn es welche gibt)
+//
+// AUFGABE:
+//  - Beschreibe ein Objekt 'Person' mit den folgenden Eigenschaften:
+//    - salutation (String oder null)
+//    - firstname (String)
+//    - age (Zahl)
+//    - hobby (String, optional)
+//    - greet: Eine Funktion, die einen String entgegennimmt und einen String zurückliefert
+//
+// REFERENZ:
+//  Type Aliase: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases
+//  Objekt-Typen: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#object-types
+//  Beschreiben von Funktionssignaturen: https://www.typescriptlang.org/docs/handbook/2/functions.html#function-type-expressions
+//  Für die Zusatzaufgabe:
+//   Type Narrowing mit in-Operator: https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-in-operator-narrowing
 
 type Person = {
-	name: string;
+	firstname: string;
+	salutation: string | null;
 	age: number;
-	yearOfBirth: number;
-}
-
-type PersonWithHobby = Person & {
 	hobby?: string;
-
-	spendTimeWithHobby?: (timeSpent: number) => string
+	greet: (phrase: string) => string;
 }
 
-function example() {
-	const p: PersonWithHobby = {
-		name: "Klaus",
-		age: 32,
-		yearOfBirth: 1990,
-		hobby: "Fussball",
-
-		spendTimeWithHobby: (timeSpent) => "Time spent with your hobby: " + (timeSpent * 60) + " minutes"
-	};
+const p1: Person = {
+	firstname: "Susi",
+	salutation: "Ms",
+	age: 32,
+	hobby: "JavaScript",
+	greet(p) { return `Hello, ${p}`}
+}
+const p2: Person = {
+	firstname: "Susi",
+	salutation: null,
+	age: 32,
+	greet(p) { return `Hello, ${p}`}
 }
 
-
-function example1() {
-	// Gültige Person
-	const p: Person = {
-		name: "Klaus",
-		age: 32,
-		yearOfBirth: 1990,
-	};
+// Falsche Werte
+//   Achtung! 'ts-expect-error' sagt TypeScript,
+//     dass hier ein Fehler _erwartet_ wird
+//     Wir sagen also TS, wir machen hier etwas bewusst falsch
+//  Wenn du den Person Typen korrekt beschrieben hast,
+//    dürfen hier keine Fehler auftreten
+//    Beispiel:
+//     "salutation: 3" hat einen falschen Typ (kein String)
+//     da wir TS mit ts-expect-error sagen, dass wir diesen
+//     Fehler _erwarten_ wird TS hier keinen Fehler anzeigen
+//     außer, wenn es keinen Fehler gibt 🤯
+//     (also wenn du fälschlicherweise im Person-Typ für
+//     salutation auch eine Zahl erlauben würdest)
+//   Kurzfassung: auch hier dürfen keine Fehler von TS angezeigt
+//    wenn, selbst wenn die Werte nicht zu deinem Typen passen.
+const p3: Person = {
+	firstname: "Susi",
+	// @ts-expect-error
+	salutation: 3,
+	// @ts-expect-error
+	age: null,
+	// @ts-expect-error
+	greet(p: number) { return `Hello, ${p}`}
 }
 
-function example2() {
-	// Gültige PersonWithHobby
-	const p: PersonWithHobby = {
-		name: "Klaus",
-		age: 32,
-		yearOfBirth: 1990,
-		hobby: "Fussball",
-
-		spendTimeWithHobby: (timeSpent) => "Time spent with your hobby: " + (timeSpent * 60) + " minutes"
-	};
+// ZUSATZ-AUFGABE
+//   - Definiere einen zweiten Typen "Animal",
+//      der nur eine Eigenschaft hat:
+//       - "name" (String)
+//   - Implementiere eine Funktion "greet",
+//     die einen Parameter hat, der sowohl
+//      Animal als auch Person sein kann, so dass man
+//      die Funktion mit einer Person, aber auch mit einem
+//      Animal aufrufen kann.
+//   - Kannst du in der _Implementierung_ der Funktion unterscheiden,
+//      ob ein Animal oder eine Person übergeben wurde,
+//      und dann einen entsprechenden Gruß ausgeben:
+//       - wenn Animal: dessen "name" verwenden
+//       - wenn Person: deren "firstname" verwenden
+//   -
+type Animal = {
+	name: string
 }
 
+function greet(p: Person | Animal) {
+	if ("name" in p) {
+		return p.name;
+	}
 
-function example3() {
-	// @ts-expect-error Hier fehlen die Eigenschaften aus 'Person'
-	const p: PersonWithHobby = {
-		hobby: "Fussball",
-		spendTimeWithHobby: (timeSpent) => "Time spent with your hobby: " + (timeSpent * 60) + " minutes"
-	};
+	return p.firstname;
 }
-
-function example4() {
-	// Hier sind zuviele Eigenschaften in Person
-	const p: Person = {
-		name: "Klaus",
-		age: 32,
-		yearOfBirth: 1990,
-		// @ts-expect-error  Im 'Person'-Typ sollen 'hobby' und 'spendTimeWithHobby' nicht vorhanden sein
-		hobby: "Fussball",
-		// @ts-expect-error Im 'Person'-Typ sollen 'hobby' und 'spendTimeWithHobby' nicht vorhanden sein
-		spendTimeWithHobby: (timeSpent) => "Time spent with your hobby: " + (timeSpent * 60) + " minutes"
-	};
-}
-
-function example5() {
-  // Person mit ungültigen Werten
-	const p: Person = {
-		name: "Klaus",
-		// @ts-expect-error
-		age: "32",
-		// @ts-expect-error
-		yearOfBirth: null,
-	};
-}
-
-
-function example6() {
-	// Person mit ungültigen Werten
-	const p: Person = {
-		// @ts-expect-error
-		name: undefined,
-		// @ts-expect-error
-		age: undefined,
-		// @ts-expect-error
-		yearOfBirth: undefined
-	};
-}
-
-
-function example7() {
-	// PersonWithHobby mit ungültigen Werten
-	const p: PersonWithHobby = {
-		name: "Susi",
-		age: 32,
-		yearOfBirth: 1990,
-		// @ts-expect-error
-		hobby: null,
-		// @ts-expect-error
-		spendTimeWithHobby: null
-	};
-}
-
-
-
-
-
