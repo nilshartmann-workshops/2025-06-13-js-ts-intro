@@ -39,17 +39,9 @@
           <div>
             <h3><span class="transparent-bg">Slides</span></h3>
             <p>
-              <span class="transparent-bg">Lokal: js-ts-grundlagen.html</span>
+              <span class="transparent-bg">Lokal: js-grundlagen.html</span>
             </p>
-            <p>
-              <span class="transparent-bg"
-                >Remote:
-                <a
-                  href="https://nextjsreactgraphql.github.io/js-ts-intro/js-ts-grundlagen.html"
-                  >https://nextjsreactgraphql.github.io/js-ts-intro/js-ts-grundlagen.html</a
-                ></span
-              >
-            </p>
+            <p><span class="transparent-bg">(mit Doppelklick im Browser öffnen)</span></p>
           </div>
         </section>
         <section>
@@ -86,50 +78,20 @@
             </div>
           </div>
         </section>
-<!--        <section>-->
-<!--          <h2>Und ihr?</h2>-->
-<!--          <ul>-->
-<!--            <li>Stellt euch doch bitte kurz vor...</li>-->
-<!--            <li>-->
-<!--              Eure Vorkenntnisse in <b>JavaScript</b>, <b>TypeScript</b>, <b>React</b>,-->
-<!--              anderen Web-Frameworks und/oder Programmiersprachen?-->
-<!--            </li>-->
-<!--            <li>Wünsche für diese Schulung? Besondere Themen oder Interessen?</li>-->
-<!--          </ul>-->
-<!--        </section>-->
-        <!-- ============================================================================= -->
-
-        <section data-markdown>
-          <textarea data-template>
-### Zeitplan
-
-* Montag: JavaScript Intro
-  * 9 Uhr bis 16 Uhr
-  * Mittagspause 12:00 bis 13:00 Uhr  🍕 🍝
-  * Kürzere jeweils Pausen zwischendurch ☕️ 😴
-
-* Dienstag: TypeScript + GraphQL Basics
-  * **10:30 Uhr** bis 17 Uhr
-  * Mittagspause 12:30 bis 13:30 Uhr
-  * Kürzere jeweils Pausen zwischendurch ☕️ 😴
-
----
-### Agenda: JavaScript Grundlagen
-* Wir beschränken uns auf die Features, die ihr üblicherweise in React verwendet
-* Funktionen
-* Wichtige Operatoren
-* Objekte und Arrays
-* Module
-* Promises und async/await
-* (TypeScript)
-
-
-
-          </textarea>
+        <section>
+          <h2>Und ihr?</h2>
+          <ul>
+            <li>Stellt euch doch bitte kurz vor...</li>
+            <li>
+              Eure Vorkenntnisse in <b>JavaScript</b>, <b>TypeScript</b>, <b>React</b>,
+              anderen Web-Frameworks und/oder Programmiersprachen?
+            </li>
+            <li>Wünsche für diese Schulung? Besondere Themen oder Interessen?</li>
+          </ul>
         </section>
+        <!-- ============================================================================= -->
         <section>
           <h2>Grundsätzliches</h2>
-          <p class="fragment">Bitte schaltet Euer Video ein 🙏</p>
           <p class="fragment"><b>Jederzeit:</b> Fragen und Diskussionen!</p>
           <p class="fragment">Motto: Es gibt keine dummen Fragen!</p>
           <p class="fragment">
@@ -143,15 +105,33 @@
             Wir machen zwischendurch Übungen, in denen ihr selbst programmieren könnt
           </p>
         </section>
+        <section data-markdown>
+          <textarea data-template>
+
+---
+### Agenda: JavaScript Grundlagen
+* Wir beschränken uns auf die Features, die ihr üblicherweise in React verwendet
+* Funktionen
+* Wichtige Operatoren
+* Objekte und Arrays
+* (Module)
+* (Promises und async/await)
+* (TypeScript)
+
+
+
+          </textarea>
+        </section>
+
 
         <section id="t-javascript">
           <h1>JavaScript</h1>
         </section>
 
-        <section>
-          <h3>JavaScript</h3>
-          <img src="slides/images/screenshot-tweet-the-javascript.png" style="max-width: 700px"/>
-        </section>
+<!--        <section>-->
+<!--          <h3>JavaScript</h3>-->
+<!--          <img src="slides/images/screenshot-tweet-the-javascript.png" style="max-width: 700px"/>-->
+<!--        </section>-->
 <section>
   <h3>JavaScript: Die Sprache</h3>
   <p>
@@ -177,6 +157,33 @@ x = function() { return "Hallo" } // typeof x === "function"
 
 x.toUpperCase(); // Ouch 😱
     </code></pre>
+        </section>
+        <section data-markdown="">
+  <textarea data-template>
+### Hintergrund: Typsystem
+
+* JavaScript hat ein _dynamisches_ Typsystem
+  * Variablen können nicht nur ihre _Werte_ sondern auch ihre _Typen_ ändern
+  * ```typescript
+    // a.js
+    let c = 7;
+    c = "Moin"; // kein Problem
+
+    c = function() { /* ... */ } // auch kein Problem
+    ```
+* Java, C#, Rust etc. haben ein _statisches_ Typsystem
+* Mit **TypeScript** bekommen wir auch ein _statisches_ Typsystem für JavaScript
+  * ```typescript
+    // a.ts
+    let c = 7;
+    c = "Moin"; // ERROR
+
+    c = function() { /* ... */ } // ERROR
+    ```
+* TypeScript basiert auf der JavaScript-Syntax und fügt eigene Syntax hinzu
+  * Das bedeutet, alles was wir an Syntax lernen, verwenden wir so auch (fast) genau mit TS
+  * TypeScript hilft uns "nur" dabei, weniger Fehler zu machen
+  </textarea>
         </section>
         <!-- ============================================================================= -->
         <section>
@@ -214,6 +221,9 @@ x.toUpperCase(); // Ouch 😱
           <p class="fragment">Das veraltete <code>var</code> bitte <b>nicht mehr verwenden</b>!</p>
         </section>
 
+
+
+
         <!-- ============================================================================= -->
         <section>
           <h3>Operatoren</h3>
@@ -250,34 +260,7 @@ if ("" == false) {
             <a href="https://github.com/denysdovhan/wtfjs">WTF JS</a>
           </p>
         </section>
-        <section data-markdown>
-          <textarea data-template>
-### Coercion
 
-* Type Coercion ist das _implizite_ Konvertieren eines Typs in einen anderen
-* Es gibt diverse (unübersichtliche) Regeln dafür in die JavaScript
-* Die Regeln sind abhängig von Operator und Typ des Operanden
-* Hier gibt es eine gute [Übersicht](https://medium.com/front-end-weekly/implicit-coercion-in-javascript-5077ad5510d)
-* Wenn zum Beispiel ein `string` und eine `number` "addiert" werden, wird die `number` in den String konvertiert:
-* ```typescript
-  let a = 1 + "1";  // 11
-  ```
-* Bei allen anderen mathematichen Operatoren wird hingegen der String in eine Number konvertiert:
-* ```typescript
-  let b = 1 - "1"; // 0
-  ```
-* Viele im Internet gehandelte Probleme sind exotischer Natur, die man normalerweise ohnehin nicht machen würde
-  * ```typescript
-    let c = [] + 1; // 1
-    let d = {} + true // "[object Object]true"
-    ```
-* Launinger Vortrag zu dem Thema: [WTF JS](https://github.com/denysdovhan/wtfjs)
-* Wenn mal wollte, könnte man damit ganze Anwendungen bauen: [http://www.jsfuck.com/](http://www.jsfuck.com/)
-* Im richtigen Leben bewahrt uns TypeScript in vielen Fällen vor der falschen Verwendung der Typen
-
-  </textarea
-  >
-        </section>
         <!-- ============================================================================= -->
         <section>
           <h3>JavaScript: Datatypes</h3>
@@ -319,6 +302,121 @@ if ("" == false) {
 
             </code></pre>
         </section>
+
+        <section data-markdown="">
+          <textarea data-template>
+### JavaScript: Datatypes
+Objekte (Singletons)
+```typescript
+  const person = {
+    firstname: "Susi",
+    lastname: "Larson"
+  }
+```
+Arrays (Listen)
+```typescript
+  const personen = [ "Susi", "Klaus", "Lara" ];
+```
+
+          </textarea>
+         </section>
+
+
+        <section data-markdown>
+          <textarea data-template>
+### Hintergrund: Coercing
+
+* Type Coercing ist das _implizite_ Konvertieren eines Typs in einen anderen
+* Es gibt diverse (unübersichtliche) Regeln dafür in die JavaScript
+* Die Regeln sind abhängig von Operator und Typ des Operanden
+* Hier gibt es eine gute [Übersicht](https://medium.com/front-end-weekly/implicit-coercion-in-javascript-5077ad5510d)
+* Wenn zum Beispiel ein `string` und eine `number` "addiert" werden, wird die `number` in den String konvertiert:
+* ```typescript
+  let a = 1 + "1";  // 11
+  ```
+* Bei allen anderen mathematichen Operatoren wird hingegen der String in eine Number konvertiert:
+* ```typescript
+  let b = 1 - "1"; // 0
+  ```
+* (*TypeScript* würde hier einen Fehler ausgeben)
+  </textarea
+  >
+        </section>
+
+
+        <section>
+          <h3>Truthy und falsy</h3>
+          <p>
+            <b><a href="https://developer.mozilla.org/de/docs/Glossary/Falsy">falsy</a></b> ist ein
+            Wert, der <b>false</b> wird, wenn er (implizit oder explizit) in ein Boolean konvertiert
+            wird
+          </p>
+          <p>
+            <b><a href="https://developer.mozilla.org/de/docs/Glossary/Truthy">truthy</a></b> ist
+            ein Wert, der <b>true</b> wird, wenn er (implizit oder explizit) in ein Boolean
+            konvertiert wird (das sind alle Werte, die nicht falsy sind)
+          </p>
+
+          <pre><code class="javascript">
+    if (true) { console.log("I'm true") } // I'm true
+
+    if ("hello") { console.log("I'm true") } // I'm true
+
+    if (null) { console.log("I'm falsy") } //
+
+    if (undefined) { console.log("I'm falsy") } //
+  </code></pre>
+
+          <p class="fragment">Was ist mit diesen?</p>
+
+          <pre class="fragment"><code class="javascript">
+    if (0) { console.log("will this be shown?"); } // 🤔
+  </code></pre>
+
+          <pre class="fragment"><code class="javascript">
+    if ("") { console.log("will this be shown?"); } // 🤔
+  </code></pre>
+
+          <pre class="fragment"><code class="javascript">
+    if ([]) { console.log("will this be shown?"); } // 🤔
+  </code></pre>
+
+          <pre class="fragment"><code class="javascript">
+    if ({}) { console.log("will this be shown?"); } // 🤔
+  </code></pre>
+        </section>
+
+        <!-- ============================================================================= -->
+        <section>
+          <h3>Truthy und falsy #2</h3>
+
+          <p>Insbesondere mit <code>0</code> und Leerstring aufpassen:</p>
+
+          <pre class="fragment"><code class="javascript">
+        function add(a, b) {
+          if (!a) {
+            throw new Error("Invalid Argument a!");
+          }
+
+          if (!b) {
+            throw new Error("Invalid Argument b!");
+          }
+
+          return a + b;
+        }
+      </code></pre>
+          <pre class="fragment"><code class="javascript">
+        add(2, 1);  // 3 👍
+        add(1, null); // "Invalid Argument b" 👍
+      </code></pre>
+
+          <pre class="fragment"><code class="javascript">
+        add(1, 0); // "Invalid Argument b" 🤦
+      </code></pre>
+        </section>
+
+
+
         <!-- ============================================================================= -->
         <section>
           <h3>Template Strings</h3>
@@ -417,38 +515,38 @@ printer(helloWorld);
             function add(value = 0, inc) { ... } // FEHLER
           </code></pre>
         </section>
-        <section>
-          <h3>Rest-Parameter</h3>
+<!--        <section>-->
+<!--          <h3>Rest-Parameter</h3>-->
 
-          <p class="fragment">
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters"
-              >Rest-Parameter</a
-            >
-            nehmen alle verbleibenen, übergebenen Parameter auf
-          </p>
+<!--          <p class="fragment">-->
+<!--            <a-->
+<!--              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters"-->
+<!--              >Rest-Parameter</a-->
+<!--            >-->
+<!--            nehmen alle verbleibenen, übergebenen Parameter auf-->
+<!--          </p>-->
 
-          <pre class="fragment"><code class="javascript">
-            function greet(phrase, ...names) { 
-              // ...
-            }
+<!--          <pre class="fragment"><code class="javascript">-->
+<!--            function greet(phrase, ...names) { -->
+<!--              // ...-->
+<!--            }-->
 
-            greet("Hello", "World", "Peter", "Susi");
+<!--            greet("Hello", "World", "Peter", "Susi");-->
 
-            // phrase ist "Hello",
-            // names ist ein Array mit "World", "Peter", "Susi"
-          </code></pre>
+<!--            // phrase ist "Hello",-->
+<!--            // names ist ein Array mit "World", "Peter", "Susi"-->
+<!--          </code></pre>-->
 
-          <pre class="fragment"><code class="javascript">
-            function say(...words) { 
-              // ...
-            } 
+<!--          <pre class="fragment"><code class="javascript">-->
+<!--            function say(...words) { -->
+<!--              // ...-->
+<!--            } -->
 
-            say("One", "Two");
+<!--            say("One", "Two");-->
 
-            // words ist ein Array mit allen Parametern ("One", "Two")
-          </code></pre>
-        </section>
+<!--            // words ist ein Array mit allen Parametern ("One", "Two")-->
+<!--          </code></pre>-->
+<!--        </section>-->
 
         <!-- ============================================================================= -->
         <section>
@@ -954,201 +1052,8 @@ person.sayHello();  Hello, undefined 🤪
 
         <!-- ============================================================================= -->
         <!-- ============================================================================= -->
-        <section>
-          <h3>Truthy und falsy</h3>
-          <p>
-            <b><a href="https://developer.mozilla.org/de/docs/Glossary/Falsy">falsy</a></b> ist ein
-            Wert, der <b>false</b> wird, wenn er (implizit oder explizit) in ein Boolean konvertiert
-            wird
-          </p>
-          <p>
-            <b><a href="https://developer.mozilla.org/de/docs/Glossary/Truthy">truthy</a></b> ist
-            ein Wert, der <b>true</b> wird, wenn er (implizit oder explizit) in ein Boolean
-            konvertiert wird (das sind alle Werte, die nicht falsy sind)
-          </p>
-
-          <pre><code class="javascript">
-    if (true) { console.log("I'm true") } // I'm true
-
-    if ("hello") { console.log("I'm true") } // I'm true
-    
-    if (null) { console.log("I'm falsy") } // 
-
-    if (undefined) { console.log("I'm falsy") } // 
-  </code></pre>
-
-          <p class="fragment">Was ist mit diesen?</p>
-
-          <pre class="fragment"><code class="javascript">
-    if (0) { console.log("will this be shown?"); } // 🤔
-  </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-    if ("") { console.log("will this be shown?"); } // 🤔
-  </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-    if ([]) { console.log("will this be shown?"); } // 🤔
-  </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-    if ({}) { console.log("will this be shown?"); } // 🤔
-  </code></pre>
-        </section>
-
-        <!-- ============================================================================= -->
-        <section>
-          <h3>Truthy und falsy #2</h3>
-
-          <p>Insbesondere mit <code>0</code> und Leerstring aufpassen:</p>
-
-          <pre class="fragment"><code class="javascript">
-        function add(a, b) {
-          if (!a || !b) {
-            throw new Error("Invalid Argument!");
-          }
-
-          return a + b;
-        }
-      </code></pre>
-          <pre class="fragment"><code class="javascript">
-        add(2, 1);  // 3 👍
-        add(1, null); // "Invalid Argument" 👍
-      </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-        add(1, 0); // "Invalid Argument" 🤦
-      </code></pre>
-        </section>
-
-        <section data-markdown>
-          <textarea data-template>
-### Truthy und falsy #3
-
-* Mit Default-Werten (Destructuring) und Default-Parametern (Funktionen) aufpassen
-* Defaults werden nur verwendet, wenn der entsprechende Wert `undefined` ist
-* `truthy` bzw. `falsy` spielen hier keine Rolle!
-* ```javascript
-  const person = { firstname: null };
-
-  const { firstname = "Susi" } = person; // firstname: null!
-  ```
-* ```javascript
-  function sayHello(name = "Susi") { return "Hello, " + name }
-
-  sayHello(null); // Hello, null
-  ```
-  </textarea
-          >
-        </section>
-        <section>
-          <h3>Weitere Operatoren</h3>
-          <p>
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND"
-            >AND</a
-            >
-          </p>
-          <p>Liefert den ersten ("linken") Wert zurück, wenn sich dieser zu <b>false</b> konvertieren lässt. Ansonsten den zweiten Wert.</p>
-
-          <pre class="fragment"><code class="javascript">
-            const winter = true;
-            const summer = false;
-            const winterAndSummer = winter && summer; // false;
-          </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-            const isSuccess = false;
-            const hint = "Data saved!"
-            console.log(isSuccess && hint); // "false"
-          </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-            const firstname = "Susi";
-            const lastname = "Meier"
-            const name = firstname && lastname; // Susi
-          </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-            const firstname = "";
-            const lastname = "Meier"
-            const firstnameAndLastNameSpecified = firstname && lastname; // "" 😝
-          </code></pre>
-
-        </section>
-        <section>
-          <h3>Weitere Operatoren</h3>
-
-          <p>
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR"
-            >Logical OR</a
-            >
-          </p>
-          <p>Liefert den ersten ("linken") Wert zurück, wenn sich dieser zu <b>true</b> konvertieren lässt. Ansonsten den zweiten Wert.</p>
-
-          <pre class="fragment"><code class="javascript">
-              const winter = true;
-              const summer = false;
-              const spring = false;
-
-              const isWinterOrSummer = winter || summer; // true
-              const isSummerOrSpring = summer || spring; // false
-            </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-            // Mit nicht-boolean-Werten
-            const firstname = null;
-            const lastname = "Meier"
-            const firstnameOrLastNameSpecified = firstname || lastname; // "Meier"
-          </code></pre>
 
 
-          <pre class="fragment"><code class="javascript">
-            // Mit nicht-boolean-Werten
-            const firstname = "";
-            const lastname = "Meier"
-            const firstnameOrLastNameSpecified = ??? 🤔;
-          </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-            const firstnameOrLastNameSpecified = firstname || lastname; // "Meier" 😝
-          </code></pre>
-        </section>
-
-
-
-        <section>
-          <h3>Weitere Operatoren</h3>
-          <p>
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing"
-            >Nullish coalescing operator</a
-            >
-          </p>
-          <p>Liefert den ersten ("linken") Wert zurück, wenn dieser <b>null</b> oder <b>undefined</b> ist. Ansonsten den zweiten Wert.</p>
-
-          <pre class="fragment"><code class="javascript">
-            const firstname = "Susi";
-            const lastname = "Meier"
-            const name = firstname ?? lastname; // Susi
-          </code></pre>
-
-          <pre class="fragment"><code class="javascript">
-            const firstname = null;
-            const lastname = "Meier"
-            const firstnameAndLastNameSpecified = firstname ?? lastname; // "Meier"
-          </code></pre>
-
-
-
-          <pre class="fragment"><code class="javascript">
-            const firstname = "";
-            const lastname = "Meier"
-            const firstnameAndLastNameSpecified = firstname ?? lastname; // ""
-          </code></pre>
-
-        </section>
         <!-- ============================================================================= -->
         <section>
           <h3>Beispiel: Immutability</h3>
@@ -1201,170 +1106,6 @@ const olderPersons = persons.map( p => {
           </p>
           <p class="fragment">Wenn Du fertig bist, bitte "Hand heben" in Zoom ✋‍</p>
         </section>
-
-<section data-markdown="">
-  <textarea data-template>
-### Closures
-<!-- .slide: class="left" -->
-* Eine "normale" Funktion...
-* ```typescript
-  function count() {
-    let v = 1;
-
-    v = v + 1;
-
-    return v;
-  }
-  ```
-* ```typescript
-  count(); // 2
-  ```
-  * Nach der Ausführung der Funktion wird diese abgeräumt und mit ihr alle Daten
-  * Bei erneuter Ausführung der Funktion wird diese neu initialisiert und beginnt von vorne:
-* ```typescript
-  count(); // 2
-  count(); // 2
-  count(); // 2
-  ```
----
-### Closures
-
-* Eine Closure ist eine Funktion, die nicht nur "sich selbst", sondern auch ihre Umgebung (äußere Funktion(en)) kennt
-* Dadurch kann diese Funktion eine "Instanz" haben
-* Im Gegensatz zu einer "normalen" Funktion, behält die Closure ihre "inneren" Daten (Variablen, Funktionen)
-* Diese Daten werden _Closures_ genannt und nicht von der Laufzeitumgebung abgeräumt
-* ```typescript
-  function counter() {
-    let v = 1;
-
-    function count() {
-      v = v + 1;
-      return v;
-    }
-
-    return count;
-  }
-  ```
-* ```typescript
-  const c = counter(); // counter liefert 'count'-Funktion zurück!
-  c(); // 2
-  c(); // 3
-  c(); // 4
-
-  const d = counter(); // zweite "Instanz" von count!
-  d(); // 2
-  d(); // 3
-
-  ```
-* Die Daten/Closures von `counter` würden hier erst abgeräumt, wenn `c` bzw. `d` nicht mehr verwendet werden
----
-### Closures
-* Eine Closure hat Zugriff auf alle äußeren "Scopes", bis hin zum globalen Scope
-* ```typescript
-  let c = 1;
-  function counter() {
-    let d = c + 1; // Zugriff auf globalen Scope
-
-    function count() {
-      let e = c + d; // Zugriff auf höheren und globalen Scope
-      return e;
-    }
-  }
-  ```
-* Von außen kann man nicht in die Closure eingreifen
-* Dadurch kann man z.B. Sichtbarkeiten implementieren
-* ```typescript
-  function calculator(initialValue) {
-    let value = initialValue ?? 0; // "privat"
-
-    function assertValidNumber(v) { // "privat"
-      if (typeof v !== "number") { throw new Error("not a number!") }
-    }
-
-    function add(v) {
-      assertValidNumber(v);
-      value = value + v;
-      return value;
-    }
-
-    function substract(v) {
-      assertValidNumber(v);
-      value = value - v;
-      return value;
-    }
-
-    return { add, substract };
-  }
-  ```
-* ```typescript
-  const c = calculator(2);
-  c.add(1); // 3
-  c.substract(4); // -1
-  ```
----
-### Lambda
-<!-- .slide: class="left" -->
-* Begriffe Lambda und Closure werden manchmal synonym verwendet
-* Als _Lambda_ wird aber eine anonyme, innere Funktionen bezeichnet
-* ```typescript
-  function addListener(fn) { ... }
-
-  function app() {
-    registerListener( () => console.log("Event!") ); // Lambda
-  }
-  ```
-* In _Java_ ist eine Lambda keine "echte" Closure
-* Darum müssen in _Java_ verwendete Variablen "effective final" sein
-  * ```java
-    // Java !!
-    class A {
-      void multiply(List<Integer> values) {
-          int v = 2;
-          values.stream().map(i -> i * v); // OK, lese-Zugriff auf v
-      }
-
-      void sum(List<Integer> values) {
-          int sum = 0;
-          values.stream().forEach(i -> sum += i ); // ERR: Variable used in lambda expression
-                                                  // should be final or effectively final
-      }
-    }
-    ```
-
-
-
-
-
-
-
----
-### Typ von Funktionen
-* Eine `function` ist eine "Unterklasse" eines Objekts in in JavaScript und kein eigener Datentyp
-* ```typescript
-  function greet(msg) {
-    return "Hello, " + msg;
-  }
-
-  greet instanceof Object; // true
-  ```
-* `typeof` liefert für eine Funktion (trotzdem) den eindeutigen String `function` zurück:
-* ```typescript
-  function greet(msg) {
-    return "Hello, " + msg;
-  }
-
-  typeof greet; // "function"
-  ```
----
-### Übung Closures
-
-* *Implementiere einen einfachen Cache* als **Closure**
-* Implementiere den Cache in `04_closures/index.js`
-* Dort findest du auch eine genauere Aufgabenbeschreibung
-* Lösung findest Du in `solution`
-* Wenn Du fertig bist, bitte virtuelle Hand heben 🙋
-  </textarea>
- </section>
 
         <!-- ============================================================================= -->
         <section id="t-module">
@@ -1421,43 +1162,16 @@ const olderPersons = persons.map( p => {
 - Jedes installierte Package kann auch wieder Abhängigkeiten haben, die in dessen `package.json`-Datei stehen
 - Der Package Manager installiert alle Packages inklusive ihrer Abhängigkeiten
 ---
-### Versionsbereiche
-- In der `package.json` ist für jedes Package eine Version oder ein Versionsbereich angegeben.
-  - Das gilt auch für die abhängigen Packages
-- Damit Installationen reproduzierbar bleiben, legen die Package Manager eine weitere Datei in eurem Projekt ab, die **Lock-Datei**
-  - Diese Datei wird auch in Git eingecheckt
-  - Das Format dieser Datei ist abhängig vom jeweiligen Package Manager, deswegen sollte man sich im Projekt möglichst auf einen Package Manager einigen
----
-### Scripte
-- In der `package.json`-Datei können `scripts` definiert werden
-- Das sind meistens einfache Kommandozeilen-Scripte zum Ausführen z.B. vom Build oder Tests
-  - In Next.js z.B. `dev`, um den Development Server zu starten
-- Alle Package Manager sind in der Lage die Scripte auszuführen, auch wenn die Syntax abweicht
-  - Achtung! Die Scripte werden nativ auf dem Betriebssystem ausgeführt, ihr müsst also darauf achten, dass sie auf allen Betriebssystemen laufen, die ihr unterstützt.
----
-## Module
----
 ### Module im Browser
 * Browser unterstützen nur das JavaScript Modulsystem
   * Und das proprietäre AMD
+* Zudem ist das einzelne Laden von Modulen übers Netz nicht sehr effizient
 * Um auch Node.JS Module nutzen zu können, verwenden die meisten JS Frontend Tools sog. "Bundler"
 * Ein **Bundler** analysiert Eure JavaScript-Dateien und kann die verwendeten Modulsysteme "entfernen"
 * Dazu wird der Code durch Code ersetzt, der im Browser ausführbar ist
   * Bekannte Bundler: [Webpack](https://webpack.js.org/) und [Rollup](https://rollupjs.org/)
-  * [TurboPack](https://turbo.build/pack) ist noch recht neu ist aber Standard für neue Next.js-Anwendungen
+  * In React-Anwendungen ist der Bundler in das [Vite](https://vite.dev/) Build-Tool integriert
 ---
-### Das JavaScript Modulsystem
-* Das JavaScript Modulsystem (ESM) könnt ihr verwenden, wenn ihr:
-  * in Eurer `package.json`-Datei den `type`-Eintrag auf `module` setzt
-    * ```json
-      {
-        "type": "module"
-      }
-      ```
-  * oder in Dateien, die die Endung `.mjs` tragen
-* Mit TypeScript und Bundler ist das meistens etwas einfacher:
-  - Ihr verwendet die Dateiendung `.ts` bzw. `.tsx` (für React-Code)
-  - Beim Importieren braucht ihr die Dateiendung _nicht_ anzugeben.
   </textarea
   >
         </section>
